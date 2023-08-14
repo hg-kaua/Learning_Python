@@ -1,6 +1,6 @@
 import pandas as pd
 
-dsa_df = pd.read_csv('dataset.csv')
+dsa_df = pd.read_csv("Learning_Python/dataset.csv")
 # isin() verifica se os parametros passados entre colchetes existem dentro do arquivo
 # shape retorna o numero exato de linhas e colunas
 data_frame = dsa_df[dsa_df["Quantidade"].isin([8,10])].shape
