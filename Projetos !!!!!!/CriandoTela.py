@@ -32,5 +32,6 @@ texto_orientacao.grid(column=0, row=0)
 botao = Button(janela, text="Buscar cotações", command=pegar_cotacoes)
 botao.grid(column=0,row=1)
 
+texto_cotacoes = Label(janela, text="ainda nao cliq")
 # Sempre finalizar assim
 janela.mainloop()
