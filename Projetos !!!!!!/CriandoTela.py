@@ -11,11 +11,12 @@ def pegar_cotacoes():
     cotacao_euro = requisicao_disc["EURBRL"]["bid"]
     cotacao_bitcoin = requisicao_disc["BTCBRL"]["bid"]
     
-    print(f"""
+    texto = f"""
           Dólar: {cotacao_dolar}
           Euro: {cotacao_euro}
           Bitcoin: {cotacao_bitcoin}
-          """)
+        """
+    texto_cotacoes["text"] = texto
     
 # ------- Criando a interface ---------h
 
@@ -23,16 +24,18 @@ def pegar_cotacoes():
 janela = Tk()
 
 janela.title("Cotaçao Moedas")
+# tamanho da janela
+janela.geometry("400x400")
 
 # Label é um texto dentro da janela
 texto_orientacao = Label(janela, text="Clique no botao para exibir as cotações")
 # Primeiro cria o texto depois fala a posiçao dele atraves do grid
-texto_orientacao.grid(column=0, row=0)
+texto_orientacao.grid(column=0, row=0, padx=20, pady=10)
 
 botao = Button(janela, text="Buscar cotações", command=pegar_cotacoes)
-botao.grid(column=0,row=1)
+botao.grid(column=0,row=1, padx=20, pady=10)
 
 texto_cotacoes = Label(janela, text="")
-texto_cotacoes.grid(column=0, row=2)
+texto_cotacoes.grid(column=0, row=2, padx=20, pady=10)
 # Sempre finalizar assim
 janela.mainloop()
