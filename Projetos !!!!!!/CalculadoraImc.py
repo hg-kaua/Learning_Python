@@ -1,74 +1,31 @@
 from tkinter import *
 from tkinter import ttk
 
-# cores
 
-co0 = "#444466"  # Preta
-co1 = "#feffff"  # branca
-co2 = "#4065a1"  # vermelha
+# construindo do zero calculadora de IMC
 
+def calcular_imc():
+    pass
 
-# Criando janela e configurando
+# construindo interface grafica
 janela = Tk()
 
-janela.title("")
-janela.geometry("295x230")
-janela.configure(bg=co0)
+janela.title("Calculadora IMC")
+janela.geometry("400x200")
+# campo peso
+texto_peso = Label(text="Informe seu peso: ", padx=10, pady=10)
+texto_peso.grid(column=0, row=0)
+entrada_peso = Entry(janela, width=4)
+entrada_peso.grid(column=1, row=0)
 
+# campo altura
+texto_altura = Label(text="Informe sua altura: ", padx=10, pady=10)
+texto_altura.grid(column=0, row=1)
+entrada_altura = Entry(janela, width=4)
+entrada_altura.grid(column=1,row=1)
 
-
-# Adicionando frames cima e baixo
-
-frame_cima = Frame(janela, width=95, height=50, bg=co1, pady=0, padx=0, relief="flat")
-frame_cima.grid(row=1, column=0, sticky=NSEW)
-
-frame_baixo = Frame(janela, width=295, height=200,bg=co1, pady=0, padx=0, relief="flat",)
-frame_baixo.grid(row=1, column=0, sticky=NSEW)
- 
-style = ttk.Style(janela)
-style.theme_use("clam")
-
-# frame_cima = Frame(janela, width=295, height=50,bg=co1, pady=0, padx=0, relief="flat",)
-# frame_cima.grid(row=0, column=0, sticky=NSEW)
- 
-# frame_baixo = Frame(janela, width=295, height=200,bg=co1, pady=0, padx=0, relief="flat",)
-# frame_baixo.grid(row=1, column=0, sticky=NSEW)
- 
-# style = ttk.Style(janela)
-# style.theme_use("clam")
-
-
-# Configurando frame cima
-
-app_nome = Label(frame_cima, text="Calculadora de IMC", width=23,height=1, padx=0, relief="flat", anchor="center", font=('Ivy 16 bold'), bg=co1, fg=co0)
-app_nome.place(x=0, y=2)
- 
-app_linha = Label(frame_cima, text="", width=400, height=1, padx=0, relief="flat", anchor="nw", font=('Arial 1'), bg=co2, fg=co1)
-app_linha.place(x=0, y=35)
-
-# Configurando frame baixo
-
-l_peso = Label(frame_baixo , text="Insira seu peso", height=1, padx=0, relief="flat", anchor="center", font=('Ivy 10 bold'), bg=co1, fg=co0)
-l_peso.grid(row=0, column=0, columnspan=1,  sticky=NW, pady=10, padx=3)
-e_peso = Entry(frame_baixo, width=5, font=('Ivy 10 bold'),justify='center',relief=SOLID)
-e_peso.grid(row=0, column=1, columnspan=1,  sticky=NSEW, pady=10, padx=3)
- 
-l_altura = Label(frame_baixo , text="Insira sua altura", height=1, padx=0, relief="flat", anchor="center", font=('Ivy 10 bold'), bg=co1, fg=co0)
-l_altura.grid(row=1, column=0, columnspan=1,  sticky=NW, pady=10, padx=3)
-e_altura = Entry(frame_baixo, width=5, font=('Ivy 10 bold'),justify='center',relief=SOLID)
-e_altura.grid(row=1, column=1, columnspan=1,  sticky=NSEW, pady=10, padx=3)
- 
- 
-l_resultado = Label(frame_baixo ,width=5, text="---", height=1, padx=6, pady=12, relief="flat", anchor="center", font=('Ivy 24 bold'), bg=co2, fg=co1)
-l_resultado.place(x=175, y=10)
- 
-l_resultado_texto = Label(frame_baixo , width=37, text="", height=1, padx=0, pady=12, relief="flat", anchor="center", font=('Ivy 10 bold'), bg=co1, fg=co0)
-l_resultado_texto.place(x=0, y=85)
-
-# ------------ Botao calcular ------------------
- 
-b_calcular = Button(frame_baixo, text="Calcular",width=34, height=1, overrelief=SOLID,  bg=co2, fg="white", font=('Ivy 10 bold'), anchor="center", relief=RAISED )
-# b_gerar_senha.grid(row=4, column=0,  sticky=NSEW, pady=60, padx=5, columnspan=30)
- 
+# botao calcular
+botao_calcular = Button(janela,text= "Calcular IMC", width=10, height=2, command=calcular_imc)
+botao_calcular.grid(column=0, row=3)
 
 janela.mainloop()
