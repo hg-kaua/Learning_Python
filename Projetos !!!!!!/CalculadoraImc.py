@@ -34,23 +34,27 @@ janela = Tk()
 
 janela.title("Calculadora IMC")
 janela.geometry("600x200")
+
+
+frame_cima = Frame(width=600, height=10, bg="#444466", relief="flat", pady=20)
+frame_cima.grid(column=0,row=0)
 # campo peso
-texto_peso = Label(text="Informe seu peso: ", padx=10, pady=10)
-texto_peso.grid(column=0, row=0)
-entrada_peso = Entry(janela, width=4)
-entrada_peso.grid(column=1, row=0)
+texto_peso = Label(janela,text="Informe seu peso: ", padx=10, pady=10, relief="flat")
+texto_peso.grid(column=0, row=2, sticky= W)
+entrada_peso = Entry(janela, width=4, relief="flat")
+entrada_peso.grid(column=0, row=2)
 
 # campo altura
-texto_altura = Label(text="Informe sua altura: ", padx=10, pady=10)
-texto_altura.grid(column=0, row=1)
+texto_altura = Label(janela, text="Informe sua altura: ", padx=10, pady=10)
+texto_altura.grid(column=0, row=3, sticky= W)
 entrada_altura = Entry(janela, width=4)
-entrada_altura.grid(column=1,row=1)
+entrada_altura.grid(column=0,row=3)
 
 # botao calcular
 botao_calcular = Button(janela,text= "Calcular IMC", width=10, height=2, command=calcular_imc)
-botao_calcular.grid(column=0, row=3)
+botao_calcular.grid(column=0, row=4, sticky= W)
 
-texto_resultado = Label(janela, text="",relief="flat", anchor="center")
-texto_resultado.grid(column=5, row=3)
+texto_resultado = Label(janela, text="", relief="flat")
+texto_resultado.grid(column=0, row=5, sticky= W)
 
 janela.mainloop()
