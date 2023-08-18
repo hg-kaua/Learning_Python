@@ -33,7 +33,7 @@ def calcular_imc():
 janela = Tk()
 
 janela.title("Calculadora IMC")
-janela.geometry("400x200")
+janela.geometry("600x200")
 # campo peso
 texto_peso = Label(text="Informe seu peso: ", padx=10, pady=10)
 texto_peso.grid(column=0, row=0)
