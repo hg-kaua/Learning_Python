@@ -3,6 +3,9 @@ class Categoria():
         self.nome = nome
         self.tarefas = []
     
+    def __iter__(self):
+        return self.tarefas.__iter__()
+    
     def add(self, descricao):
         self.tarefas.append(Tarefa(descricao))
     
@@ -35,7 +38,8 @@ def main():
     casa.procurar("Lavar roupa").concluir()
     print(casa)
 
-    for tarefa_casa in casa.tarefas:
+    # com a utilizaçao do __iter__ nao precisa do "casa.tarefas"
+    for tarefa_casa in casa:
         print(f"- {tarefa_casa}")
         
 if __name__ == "__main__":
