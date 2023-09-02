@@ -1,0 +1,4 @@
+pyautogui
+bs4
+webdriver-manager
+selenium
