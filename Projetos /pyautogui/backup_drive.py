@@ -8,13 +8,24 @@
 import pyautogui
 import time
 
+time.sleep(5)
 
-time.sleep(2)
+# abrindo o spotlight para abrir o chrome
 pyautogui.keyDown("command")
 pyautogui.press("space")
 pyautogui.keyUp("command")
 time.sleep(2)
 pyautogui.write("chrome")
-time.sleep(1)
 pyautogui.keyDown("enter")
+
+# comando que cria nova aba no chrome
+pyautogui.hotkey("command", "t")
+
+# escrevendo o caminho para o drive 
+time.sleep(2)
+pyautogui.write("https://drive.google.com/drive/my-drive")
+pyautogui.keyDown("enter")
+
+
+
 

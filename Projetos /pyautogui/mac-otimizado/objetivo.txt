@@ -1,0 +1,18 @@
+apps que eu abro sempre:
+Chrome:
+  - https://www.youtube.com/
+  - https://web.whatsapp.com/
+  - https://chat.openai.com/c/5d76b576-50da-4216-8386-1d3d401fb481
+  - https://mail.google.com/mail/u/0/#inbox
+Vscode:
+  - Learning python
+        - abrir nova pagina
+        - command + O para abrir pasta
+        - pesquisar por "Learning_Python"
+        - clicar na pasta 
+        - clicar em abrir
+Notion:
+  - https://mail.google.com/mail/u/0/#inbox
+Apple Music:
+  - Os planos de deus
+
