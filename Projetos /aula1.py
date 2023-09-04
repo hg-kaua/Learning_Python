@@ -1,6 +1,3 @@
-import os   
-import pyautogui
-import time
+from mouseinfo import mouseInfo
 
-
-print(pyautogui.KEY_NAMES)
+mouseInfo()
