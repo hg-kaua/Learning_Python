@@ -82,3 +82,4 @@ pa.keyUp("command")
 time.sleep(1)
 pa.write("notion")
 pa.press("enter")
+

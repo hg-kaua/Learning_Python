@@ -1,0 +1,18 @@
+1 - Captura de dados:
+    - número de rastreamento
+    - data de entrega
+    - nome do destinatario
+
+2 - Login no sistema
+    - digitar email
+    - digitar senha
+    - clicar entrar
+
+3 - Preenchimento de formulario
+    - preencher campos obrigatórios (os dados capturados)
+
+4 - Enviar dados
+
+5 - Registrar entrega
+    - gerar planilha com os validados
+    - enviar confirmaçao por email
