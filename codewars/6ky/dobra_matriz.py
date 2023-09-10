@@ -29,8 +29,6 @@ print(fold_array([-36, 100, 50, -190, 27, -103, 40], 4))
 
 def fold_array_otimizado(array, runs):
     mid = len(array) // 2
-    print( mid)
-    print(array[:mid] + [0])
     print(reversed(array[mid:]))
     
     a = [sum(pair) for pair in zip(array[:mid] + [0], reversed(array[mid:]))]
