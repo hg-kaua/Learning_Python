@@ -1,7 +1,7 @@
 import pyautogui as pa
 import time
 import pandas as pd
-import openpyxl
+
 
 # abrindo pagina de login
 
