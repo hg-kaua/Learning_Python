@@ -9,3 +9,10 @@ navegador.get("http://www.python.org")
 
 element = navegador.find_element("xpath", '//*[@id="documentation"]/a')
 element.click()
+
+# print(navegador.title)
+# navegador.back()
+# navegador.back()
+
+
+navegador.quit()
