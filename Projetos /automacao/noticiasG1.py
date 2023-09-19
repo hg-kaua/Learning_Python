@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup as bs
 import requests
 
+# acessar o site do g1
 response = requests.get('https://g1.globo.com/')
 content = response.content
 
