@@ -85,34 +85,29 @@ def recolher_investimento():
     site = bs(nav.page_source, 'html.parser')
     
     papeis = site.findAll('span', attrs={"class": "ticker waves-effect"})
+    preco = site.findAll('td', attrs={"data-key": "price"})
+    dy = site.findAll('td', attrs={"data-key": "dy"})
+    p_vp = site.findAll('td', attrs={"data-key": "p_vp"})
+    margem_liquida = site.findAll('td', attrs={"data-key": "margemliquida"})
+    
+    index = 0
     
     for papel in papeis:
-        preco = site.find('td', attrs={"class": "text-right"})
-        
-        dy = site.find('td', attrs={"data-key": "dy"})
-        
-        p_vp = site.find('td', attrs={"data-key": "p_vp"})
-        
-        margem_liquida = site.find('td', attrs={"data-key": "margemliquida"})
-        
         print(f'Papel: {papel.text}')
-        print(f'Preço: {preco.text}')
-        print(f'DY: {dy.text}')
-        print(f'P/VP: {p_vp.text}')
+        print(f'Preço: {preco[index].text}')
+        print(f'DY: {dy[index].text}')
+        print(f'P/VP: {p_vp[index].text}')
         
         if margem_liquida:
-            print(f'Margem líquida: {margem_liquida.text}')
+            print(f'Margem líquida: {margem_liquida[index].text}')
         
+        index+=1
         print()
     
 
 investimento = selecionar_investimento()
 
 nav = webdriver.Chrome(options=options)
-print(nav.get(url_base + investimento))
-
-
-
 sleep(2)
 
 if opcao == '1':
