@@ -1,0 +1,12 @@
+--- AÇAO ---
+- DY
+- P/VP
+- ROE
+- CAGR - 5 ANOS
+- MARGEM LIQUIDA
+
+--- FUNDOS IMOBILIARIOS ---
+- DY
+- P/VP
+- CAGR - 3 ANOS
+- NUMERO COSTISTA
