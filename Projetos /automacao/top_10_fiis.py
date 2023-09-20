@@ -1,9 +1,10 @@
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup as bs
 from selenium import webdriver
 from time import sleep
 
 
 options = webdriver.ChromeOptions()
+# options.add_argument('-headless')
 options.add_experimental_option("detach", True)
 
 url_base = 'https://statusinvest.com.br/'
@@ -20,18 +21,18 @@ def analisar_fii():
     dy_max = nav.find_element('xpath', '//*[@id="main-2"]/div[3]/div/form/div[2]/div[1]/div/div[2]/div[2]/input')
     
     sleep(0.5)
-    dy_min.send_keys('8,00')
+    dy_min.send_keys('800')
     dy_max.clear()
-    dy_max.send_keys('14,00')
+    dy_max.send_keys('1400')
     
     # inserindo preço sobre valor patrimonial desejado
     p_vp_min = nav.find_element('xpath', '//*[@id="main-2"]/div[3]/div/form/div[2]/div[2]/div/div[2]/div[1]/input')
     p_vp_max = nav.find_element('xpath', '//*[@id="main-2"]/div[3]/div/form/div[2]/div[2]/div/div[2]/div[2]/input')
 
     sleep(0.5)
-    p_vp_min.send_keys('0,80')
+    p_vp_min.send_keys('080')
     p_vp_max.clear()
-    p_vp_max.send_keys('1,10')
+    p_vp_max.send_keys('150')
     
     sleep(0.5)
     num_cotista = nav.find_element('xpath', '//*[@id="main-2"]/div[3]/div/form/div[2]/div[4]/div/div[2]/div[1]/input')
@@ -80,6 +81,31 @@ def analisar_acao():
     
     pass
 
+def recolher_investimento():
+    site = bs(nav.page_source, 'html.parser')
+    
+    papeis = site.findAll('span', attrs={"class": "ticker waves-effect"})
+    
+    for papel in papeis:
+        preco = site.find('td', attrs={"class": "text-right"})
+        
+        dy = site.find('td', attrs={"data-key": "dy"})
+        
+        p_vp = site.find('td', attrs={"data-key": "p_vp"})
+        
+        margem_liquida = site.find('td', attrs={"data-key": "margemliquida"})
+        
+        print(f'Papel: {papel.text}')
+        print(f'Preço: {preco.text}')
+        print(f'DY: {dy.text}')
+        print(f'P/VP: {p_vp.text}')
+        
+        if margem_liquida:
+            print(f'Margem líquida: {margem_liquida.text}')
+        
+        print()
+    
+
 investimento = selecionar_investimento()
 
 nav = webdriver.Chrome(options=options)
@@ -91,10 +117,14 @@ sleep(2)
 
 if opcao == '1':
     analisar_acao()
+    sleep(2)
+    recolher_investimento()
     sleep(10)
     nav.quit()
 elif opcao == '2':
+    sleep(2)
     analisar_fii()
     sleep(10)
+    recolher_investimento()
     nav.quit()
 
