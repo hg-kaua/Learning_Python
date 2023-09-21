@@ -10,3 +10,4 @@
 - P/VP
 - CAGR - 3 ANOS
 - NUMERO COSTISTA
+preco[index].text

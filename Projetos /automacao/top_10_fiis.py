@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup as bs
 from selenium import webdriver
 from time import sleep
+import pandas as pd
 
 
 options = webdriver.ChromeOptions()
@@ -91,6 +92,7 @@ def recolher_investimento():
     margem_liquida = site.findAll('td', attrs={"data-key": "margemliquida"})
     
     index = 0
+    lista_investimento = []
     
     for papel in papeis:
         print(f'Papel: {papel.text}')
@@ -100,26 +102,51 @@ def recolher_investimento():
         
         if margem_liquida:
             print(f'Margem líquida: {margem_liquida[index].text}')
+            lista_investimento.append([papel.text, preco[index].text, dy[index].text, p_vp[index].text, margem_liquida[index].text])
+        else:
+            lista_investimento.append([papel.text, preco[index].text, dy[index].text, p_vp[index].text])
         
         index+=1
         print()
-    
+        
+    return lista_investimento
 
+
+# transformar lista em xlsx
+
+def converter_excel(dado, name):
+    if len(dado[0]) == 5:
+        df = pd.DataFrame(dados, columns=["Papel", "Preço", "Dividend Yield", "P/VP", "Margem líquida"])
+        print(df)
+    else:
+        df = pd.DataFrame(dados, columns=["Papel", "Preço", "Dividend Yield", "P/VP"])
+        print(df)
+    
+    nome_arq = 'melhores_' + name + '.xlsx'
+    df.to_excel(nome_arq, index=False)
+    
 investimento = selecionar_investimento()
 
 nav = webdriver.Chrome(options=options)
+nav.get(url_base + investimento)
 sleep(2)
 
 if opcao == '1':
-    analisar_acao()
     sleep(2)
+    analisar_acao()
     recolher_investimento()
+    dados = recolher_investimento()
+    sleep(1)
+    converter_excel(dados,"açoes")
     sleep(10)
     nav.quit()
 elif opcao == '2':
     sleep(2)
     analisar_fii()
-    sleep(10)
     recolher_investimento()
+    dados = recolher_investimento()
+    sleep(1)
+    converter_excel(dados,"fiis")
+    sleep(10)
     nav.quit()
 
