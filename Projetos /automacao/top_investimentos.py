@@ -116,6 +116,9 @@ def recolher_investimento():
         index+=1
         print()
         
+    print(lista_investimento)
+
+        
     return lista_investimento
 
 
